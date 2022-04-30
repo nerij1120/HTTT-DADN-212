@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/drawable/bg_spark_line.xml" value="0.1405" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/drawable/bg_spark_line_humid.xml" value="0.1" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/drawable/drawable_watering_state_bg.xml" value="0.3675" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/drawable/gradient_card_2_bg.xml" value="0.2335" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/drawable/gradient_card_alarm_bg.xml" value="0.319" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/drawable/gradient_card_bg.xml" value="0.2335" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/drawable/gradient_card_bg_dry.xml" value="0.1095" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/drawable/gradient_card_bg_hot.xml" value="0.1395" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/drawable/gradient_water_btn_bg.xml" value="0.1925" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/layout/activity_analytics.xml" value="0.2" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/layout/activity_change_settings.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/layout/activity_history.xml" value="0.264" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/layout/activity_main.xml" value="0.3352601156069364" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/layout/activity_settings.xml" value="0.4" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/layout/fragment_history.xml" value="0.24722222222222223" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/layout/fragment_settings.xml" value="0.275" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/layout/history.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/layout/history_list_item.xml" value="0.4" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/layout/settings.xml" value="0.2" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/menu/bottom_menu_navigation.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2335" />
+        <entry key="..\:/Users/loc_m/AndroidStudioProjects/HTTT/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2335" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
