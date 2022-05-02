@@ -17,7 +17,7 @@ public class XAxisValueFormatter extends IndexAxisValueFormatter {
         Date time = new Date(data);
 //        DateFormat dateFormat = DateFormat.getTimeInstance(DateFormat.DEFAULT, Locale.getDefault());
         SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a");
-        Log.d("date", time.toString());
+        //Log.d("date", time.toString());
         return dateFormat.format(time);
     }
 }

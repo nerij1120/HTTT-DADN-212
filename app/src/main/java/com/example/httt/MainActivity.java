@@ -32,6 +32,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 
 
@@ -71,7 +72,7 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
 
     private static final String USERNAME = "nerij1120";
-    private static final String IO_KEY = "aio_SLwZ44d4E4YPfcrVa4lxdiaLVzkR";
+    private static final String IO_KEY = "aio_YeLU95vlyeVPKdFxsewfkUQ9yNJZ";
 
     private ExtendedFloatingActionButton floatingActionButton;
     private TextView txtTemp, txtHumidity, txtWater;
@@ -140,6 +141,15 @@ public class MainActivity extends AppCompatActivity {
         apiCall();
 
 
+        //FLOATING ACTION BUTTON
+//        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                pumpFlag = true;
+//                pumpWater();
+//            }
+//        });
+
         //BOTTOM NAVIGATION
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -200,28 +210,22 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("mqtt", topic + " " + message);
                 if(topic.equals("nerij1120/feeds/temp/json"))
                 {
-                    Log.d("mqtt", "Temp" );
                     JSONObject jsonObject = new JSONObject(message.toString());
-
                     Double temp = jsonObject.getDouble("last_value");
-
-                    txtTemp.setText(temp.toString() + " \u00B0C");
 
                     Temp tempObj = new Temp(-1, temp);
                     boolean success = dataBaseHelper.addOne(tempObj);
-                    Log.d("mqtt", "Success = " + success);
+                    Log.d("mqtt", "Add Temp Success = " + success);
 
                 }
                 else if(topic.equals("nerij1120/feeds/humidity/json"))
                 {
-                    Log.d("mqtt", "Humid" );
                     JSONObject jsonObject = new JSONObject(message.toString());
                     Integer humid = jsonObject.getInt("last_value");
-                    txtHumidity.setText(humid.toString() + "%");
-//
+
                     Humid humidObj = new Humid(-1, humid);
                     boolean success = dataBaseHelper.addOne(humidObj);
-                    Log.d("mqtt", "Success = " + success);
+                    Log.d("mqtt", "Add Humid Success = " + success);
                 }
                 else if(topic.equals("nerij1120/feeds/pump/json"))
                 {
@@ -271,8 +275,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
                 // Something went wrong e.g. connection timeout or firewall problems
-                Log.d("mqtt", asyncActionToken.toString());
-                Log.d("mqtt", exception.toString());
+                Log.d("mqtt Error", asyncActionToken.toString());
+                Log.d("mqtt Error", exception.toString());
             }
         });
     }
@@ -295,7 +299,6 @@ public class MainActivity extends AppCompatActivity {
                             JSONObject humidInfo = response.getJSONObject(0);
                             humidity = humidInfo.getInt("last_value");
 
-                            //Toast.makeText(MainActivity.this, temp.toString(), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -307,8 +310,6 @@ public class MainActivity extends AppCompatActivity {
                         History history = new History(-1, dateTimeFormatter1.format(localDateTime), dateTimeFormatter.format(localDateTime), temp, humidity);
 
                         boolean success = dataBaseHelper.addOne(history);
-
-                        Toast.makeText(MainActivity.this, "Success = " + success, Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -396,7 +397,6 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
                         Double temp = -99.0;
                         Integer humidity = -1;
-                        int pump = 0;
 
                         Date date = new Date();
                         DateFormat utcFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
@@ -412,7 +412,6 @@ public class MainActivity extends AppCompatActivity {
                             humidity = humidInfo.getInt("last_value");
 
                             JSONObject pumpInfo = response.getJSONObject(2);
-                            pump = pumpInfo.getInt("last_value");
                             date = utcFormat.parse(pumpInfo.getString("last_value_at"));
 
                             Date time = new Date();
@@ -421,8 +420,6 @@ public class MainActivity extends AppCompatActivity {
                             {
                                 pumpFlag = false;
                             }
-
-                            //Toast.makeText(MainActivity.this, temp.toString(), Toast.LENGTH_SHORT).show();
                         } catch (JSONException | ParseException e) {
                             e.printStackTrace();
                         }
@@ -443,6 +440,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                             if (!pumpFlag && water_auto)
                             {
+                                pumpFlag = true;
                                 pumpWater();
                             }
                         }else if(temp > temp1 && temp <= temp2)
@@ -548,7 +546,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void pumpWater() {
-        pumpFlag = true;
         try {
             publishAPI("nerij1120/feeds/pump/json", "1");
         } catch (UnsupportedEncodingException e) {
